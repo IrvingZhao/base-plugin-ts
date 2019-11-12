@@ -49,7 +49,7 @@
     })
     export default class ScrollAreaTest extends Vue {
 
-        private scrollContent=[
+        private scrollContent = [
             "#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff"
         ];
 
