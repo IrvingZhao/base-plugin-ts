@@ -4,6 +4,8 @@ import GeminiScrollDirective, {GeminiScroll} from "./geminiScrollbar";
 import LoadingBar from "./loadingBar";
 import ScrollArea from "./scrollArea/index.vue";
 import ScrollItem from "./scrollArea/scrollItem.vue";
+import TreeTable from "./treeTable/index.vue";
+import TreeTableColumn from "./treeTable/TableColumn";
 
 export default {
     install(Vue: VueConstructor): void {
@@ -12,6 +14,9 @@ export default {
         Vue.component("xlb-scroll-item", ScrollItem);
         // TODO ScrollArea 图标
         Vue.directive("gemini-scroll", new GeminiScrollDirective());
+        Vue.component("xlb-tree-table", TreeTable);
+        // TODO tree-table 图标
+        Vue.component("xlb-tree-table-column", TreeTableColumn);
         Vue.$loadingBar = LoadingBar;
         Vue.prototype.$loadingBar = LoadingBar;
     }

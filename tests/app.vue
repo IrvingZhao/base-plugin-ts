@@ -22,6 +22,7 @@
             {key: "configSlot", text: "ConfigSlot"},
             {key: "activeHeight", text: "ActiveHeight"},
             {key: "scrollAreaTest", text: "ScrollAreaTest"},
+            {key: "treeTableTest", text: "TreeTableTest"},
         ];
 
         private activeLabel(item: any) {

@@ -4,6 +4,7 @@ import GeminiScrollTest from "./GeminiScrollTest.vue";
 import ConfigSlotTest from "./ConfigSlotTest.vue";
 import ActiveHeightTest from "./ActiveHeightTest.vue";
 import ScrollAreaTest from "./ScrollAreaTest.vue";
+import TreeTableTest from "./TreeTableTest.vue";
 
 const routes: RouteConfig[] = [
     {
@@ -25,6 +26,10 @@ const routes: RouteConfig[] = [
     {
         path: "/scrollAreaTest",
         component: ScrollAreaTest,
+    },
+    {
+        path: "/treeTableTest",
+        component: TreeTableTest
     }
 ];
 

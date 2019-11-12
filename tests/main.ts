@@ -11,6 +11,7 @@ Vue.use(Plugin);
 Vue.use(ElementUI);
 
 import "../src/styles/index.scss";
+import "element-ui/packages/theme-chalk/src/index.scss";
 
 const router = new VueRouter({
     routes: Route.routes,
