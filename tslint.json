@@ -14,6 +14,10 @@
     "no-consecutive-blank-lines": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "quotemark": [true, "single"]
+    "max-line-length": [true,150],
+    "quotemark": [true, "double","jsx-double"],
+    "no-console": false,
+    "trailing-comma": false,
+    "jsdoc-format": [false]
   }
 }
