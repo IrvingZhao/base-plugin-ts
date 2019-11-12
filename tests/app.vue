@@ -20,6 +20,7 @@
             {key: "resize", text: "Resize"},
             {key: "geminiScroll", text: "GeminiScroll"},
             {key: "configSlot", text: "ConfigSlot"},
+            {key: "activeHeight", text: "ActiveHeight"},
         ];
 
         private activeLabel(item: any) {
