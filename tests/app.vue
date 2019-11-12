@@ -21,6 +21,7 @@
             {key: "geminiScroll", text: "GeminiScroll"},
             {key: "configSlot", text: "ConfigSlot"},
             {key: "activeHeight", text: "ActiveHeight"},
+            {key: "scrollAreaTest", text: "ScrollAreaTest"},
         ];
 
         private activeLabel(item: any) {
