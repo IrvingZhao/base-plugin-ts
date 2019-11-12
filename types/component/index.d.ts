@@ -6,6 +6,7 @@ import {LoadingBar} from "./LoadingBar";
 import {Vue} from "vue-property-decorator";
 import {XlbConfigSlot} from "./ConfigSlot";
 import {ScrollAreaD, ScrollType} from "./ScrollArea";
+import {TimesIteratorD} from "./TimesIterator";
 
 export function install(Vue: VueConstructor): void;
 
@@ -30,6 +31,12 @@ export declare class ScrollArea extends Vue implements ScrollAreaD {
 }
 
 export declare class ScrollItem extends Vue {
+}
+
+export declare class TimesIterator implements TimesIteratorD {
+    public data: [];
+    public firstTimes?: number;
+    public times: number;
 }
 
 export {
