@@ -1,10 +1,11 @@
 import {DirectiveOptions, DirectiveBinding} from "vue/types/options";
+import {ActiveHeightParam} from "../../types/directives/ActiveHeight";
 
 function childActiveHandle(this: HTMLElement, e: any) {
     this.style.height = (this.offsetHeight + e.changeHeight) + "px";
 }
 
-function getTransactionEnd(data: any) {
+function getTransactionEnd(data: ActiveHeightParam) {
     return function(this: HTMLElement) {
         if (data.active) {
             this.style.height = "auto";
@@ -24,12 +25,12 @@ function append(nextNode: HTMLElement, curNode: HTMLElement, parentNode: HTMLEle
     }
 }
 
-function changeHeight(el: HTMLElement, data: any) {
-    if (data.transiction !== undefined && data.noTransictionClass !== undefined) {
-        if (data.transiction) {
-            el.classList.remove(data.noTransictionClass);
+function changeHeight(el: HTMLElement, data: ActiveHeightDirectiveParam) {
+    if (data.transaction !== undefined && data.noTransactionClass !== undefined) {
+        if (data.transaction) {
+            el.classList.remove(data.noTransactionClass);
         } else {
-            el.classList.add(data.noTransictionClass);
+            el.classList.add(data.noTransactionClass);
         }
     }
     if (data.active) {
@@ -46,6 +47,11 @@ function changeHeight(el: HTMLElement, data: any) {
 }
 
 const transitionEventArray = "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd".split(" ");
+
+interface ActiveHeightDirectiveParam extends ActiveHeightParam {
+    nextNode: HTMLElement;
+    parentNode: HTMLElement;
+}
 
 export default class ActiveHeight implements DirectiveOptions {
     public bind(el: HTMLElement, binding: DirectiveBinding): void {
