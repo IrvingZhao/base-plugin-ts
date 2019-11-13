@@ -5,6 +5,7 @@ import ConfigSlotTest from "./ConfigSlotTest.vue";
 import ActiveHeightTest from "./ActiveHeightTest.vue";
 import ScrollAreaTest from "./ScrollAreaTest.vue";
 import TreeTableTest from "./TreeTableTest.vue";
+import UpdateTest from "./UpdateTest.vue";
 
 const routes: RouteConfig[] = [
     {
@@ -30,6 +31,10 @@ const routes: RouteConfig[] = [
     {
         path: "/treeTableTest",
         component: TreeTableTest
+    },
+    {
+        path: "/updateTest",
+        component: UpdateTest,
     }
 ];
 

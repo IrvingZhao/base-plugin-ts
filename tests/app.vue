@@ -23,6 +23,7 @@
             {key: "activeHeight", text: "ActiveHeight"},
             {key: "scrollAreaTest", text: "ScrollAreaTest"},
             {key: "treeTableTest", text: "TreeTableTest"},
+            {key: "updateTest", text: "UpdateTest"},
         ];
 
         private activeLabel(item: any) {
