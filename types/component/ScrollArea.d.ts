@@ -4,4 +4,6 @@ export interface ScrollAreaD {
     itemWidth?: number | string;
     perSize?: number;
     scrollType: ScrollType | number;
+    scrollLeftIcon?: string;
+    scrollRightIcon?: string;
 }

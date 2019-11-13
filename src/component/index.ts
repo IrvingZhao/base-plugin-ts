@@ -12,11 +12,9 @@ export default {
         Vue.component("xlb-config-slot", ConfigSlot);
         Vue.component("xlb-scroll-area", ScrollArea);
         Vue.component("xlb-scroll-item", ScrollItem);
-        // TODO ScrollArea 图标
-        Vue.directive("gemini-scroll", new GeminiScrollDirective());
         Vue.component("xlb-tree-table", TreeTable);
-        // TODO tree-table 图标
         Vue.component("xlb-tree-table-column", TreeTableColumn);
+        Vue.directive("gemini-scroll", new GeminiScrollDirective());
         Vue.$loadingBar = LoadingBar;
         Vue.prototype.$loadingBar = LoadingBar;
     }

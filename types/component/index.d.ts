@@ -29,6 +29,8 @@ export declare class ScrollArea extends Vue implements ScrollAreaD {
     public itemWidth: number | string;
     public perSize: number;
     public scrollType: ScrollType | number;
+    public scrollLeftIcon?: string;
+    public scrollRightIcon?: string;
 }
 
 export declare class ScrollItem extends Vue {

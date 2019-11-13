@@ -1,13 +1,13 @@
 <template>
     <div class="scroll-area">
         <div :class="'scroll-control '+(componentData.disableLeft ? 'disable' : '')" :style="scrollAreaStyle">
-            <i class="sys-icon-prevpage" @click="scrollLeft"></i>
+            <i :class="scrollLeftIcon" @click="scrollLeft"></i>
         </div>
         <div class="scroll-content" ref="scrollContent">
             <slot></slot>
         </div>
         <div :class="'scroll-control ' + (componentData.disableRight ? 'disable' : '')" :style="scrollAreaStyle">
-            <i class="sys-icon-nextpage" @click="scrollRight"></i>
+            <i :class="scrollRightIcon" @click="scrollRight"></i>
         </div>
     </div>
 </template>
@@ -75,6 +75,12 @@
 
         @Prop({type: [String, Number], default: "page"})
         public scrollType!: ScrollType | number;
+
+        @Prop({type: String, default: "sys-icon-prevpage"})
+        public scrollLeftIcon!: string;
+
+        @Prop({type: String, default: "sys-icon-nextpage"})
+        public scrollRightIcon!: string;
 
         @Provide("scrollArea")
         private scrollArea: ScrollArea = this;
