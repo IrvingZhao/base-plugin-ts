@@ -3,19 +3,17 @@ import dateFormat from "./DateFormatter";
 const sessionStorage = window.sessionStorage;
 
 
-export default {
-    setItem(key: string, value: any) {
+export default class UtilClass {
+    public static setItem(key: string, value: any): void {
         if (!key) {
             throw new Error("cache key cannot be null");
         }
         if (sessionStorage) {
             sessionStorage.setItem(key, JSON.stringify(value));
-        } else {
-            return null;
         }
-    },
+    }
 
-    getItem(key: string): any {
+    public static getItem(key: string): any {
         if (!key) {
             throw new Error("cannot get data from null key");
         }
@@ -25,21 +23,21 @@ export default {
         } else {
             return null;
         }
-    },
+    }
 
-    clearStorage() {
+    public static clearStorage(): void {
         if (sessionStorage) {
             sessionStorage.clear();
         }
-    },
+    }
 
-    getSimpleDate(date: Date | number) {
+    public static getSimpleDate(date: Date | number): string {
         return dateFormat(date, "yyyy-MM-dd");
-    },
+    }
 
-    getFullDate(date: Date | number) {
+    public static getFullDate(date: Date | number): string {
         return dateFormat(date, "yyyy-MM-dd HH:mm:ss");
-    },
+    }
 
     /**
      * 根据列表生成树型结构
@@ -51,7 +49,8 @@ export default {
      * @param childrenKey 子节点属性key，默认为 children
      * @return Array 树型数据
      */
-    generateTree(data: any[], parentNodeKey: string, mapCache: any = {}, idKey = "id", parentKey = "parent", childrenKey = "children") {
+    public static generateTree(data: any[], parentNodeKey: string, mapCache: any = {}, idKey = "id",
+                               parentKey = "parent", childrenKey = "children"): any[] {
         const result: any[] = [];
         data.forEach((item) => {
             mapCache[item[idKey]] = item;
@@ -75,7 +74,7 @@ export default {
             }
         });
         return result;
-    },
+    }
 
     /**
      * 根据对象的parentNode 获得 节点 path
@@ -85,7 +84,7 @@ export default {
      * @param parentNode 父节点属性 key
      * @return Array path 数组
      */
-    getTreePath(data: any, fromId: string, pushId = "id", parentNode = "parentNode") {
+    public static getTreePath(data: any, fromId: string, pushId = "id", parentNode = "parentNode"): any[] {
         const pathArr = [];
         let parent = data[fromId];
         while (parent) {
@@ -93,7 +92,7 @@ export default {
             parent = parent[parentNode];
         }
         return pathArr.reverse();
-    },
+    }
 
     /**
      * 设置当前节点及子节点 某个属性
@@ -102,7 +101,7 @@ export default {
      * @param propValue 需设置的属性值
      * @param childrenNode 子节点属性key，默认为children
      */
-    setCurrentAndChildProp(current: any, propKey: string, propValue: any, childrenNode = "children") {
+    public static setCurrentAndChildProp(current: any, propKey: string, propValue: any, childrenNode = "children"): void {
         const childArr: any[] = [];
         current[propKey] = propValue;
         if (current[childrenNode]) {
@@ -119,7 +118,7 @@ export default {
                 });
             }
         }
-    },
+    }
 
     /**
      * 获得当前节点及子节点的某个属性，并返回数组
@@ -128,7 +127,7 @@ export default {
      * @param childrenNode 子节点属性key，默认为 children
      * @return Array 属性列表
      */
-    getCurrentAndChildProp(current: any, propKey: string, childrenNode = "children") {
+    public static getCurrentAndChildProp(current: any, propKey: string, childrenNode = "children"): any[] {
         const result: any[] = [];
         if (current[propKey]) {
             result.push(current[propKey]);
@@ -147,6 +146,9 @@ export default {
             childItem = childArr.shift();
         }
         return result;
-    },
-    dateFormat
-};
+    }
+
+    public static dateFormat(date: Date | number, pattern: string): string {
+        return dateFormat(date, pattern);
+    }
+}

@@ -4,6 +4,7 @@ import GeminiScrollDirective, {GeminiScroll} from "./geminiScrollbar";
 import LoadingBar from "./loadingBar";
 import ScrollArea from "./scrollArea/index.vue";
 import ScrollItem from "./scrollArea/scrollItem.vue";
+import TimesIterator from "./timesIterator";
 import TreeTable from "./treeTable/index.vue";
 import TreeTableColumn from "./treeTable/TableColumn";
 
@@ -12,6 +13,7 @@ export default {
         Vue.component("xlb-config-slot", ConfigSlot);
         Vue.component("xlb-scroll-area", ScrollArea);
         Vue.component("xlb-scroll-item", ScrollItem);
+        Vue.component("xlb-times-iterator", TimesIterator);
         Vue.component("xlb-tree-table", TreeTable);
         Vue.component("xlb-tree-table-column", TreeTableColumn);
         Vue.directive("gemini-scroll", new GeminiScrollDirective());
@@ -23,6 +25,12 @@ export default {
 export {
     ConfigSlot,
     GeminiScroll,
+    GeminiScrollDirective,
+    ScrollArea,
+    ScrollItem,
+    TimesIterator,
+    TreeTable,
+    TreeTableColumn
     // HorScrollBar,
     // VerScrollBar,
 };

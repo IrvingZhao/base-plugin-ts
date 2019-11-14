@@ -13,8 +13,5 @@ export default {
 
 export * from "./component";
 export * from "./directives";
-export * from "./util";
 
-export {
-    Directives, Util
-};
+export * from "./util";

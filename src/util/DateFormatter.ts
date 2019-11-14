@@ -47,7 +47,7 @@ function prefixZero(data: number, length: number): string {
     return result.join("");
 }
 
-export default function dateFormat(date: Date | number, pattern: string) {
+export default function dateFormat(date: Date | number, pattern: string): string {
     let formatDate;
     if (!pattern) {
         throw new SyntaxError("pattern is null");

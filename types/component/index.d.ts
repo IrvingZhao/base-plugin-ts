@@ -1,5 +1,5 @@
 // tslint:disable:max-classes-per-file
-import {CreateElement, VueConstructor} from "vue";
+import {CreateElement, VNodeDirective, VueConstructor} from "vue";
 import {GeminiScrollbarConfig, GeminiScrollBaseConfig, GeminiScrollD} from "./GeminiScroll";
 import {ScrollBarConfig} from "./GeminiScrollBar";
 import {LoadingBar} from "./LoadingBar";
@@ -23,6 +23,11 @@ export interface GeminiScrollDirectiveConfig extends GeminiScrollBaseConfig {
 }
 
 export declare class GeminiScroll extends GeminiScrollD {
+}
+
+export interface GeminiScrollDirective extends VNodeDirective {
+    name: "gemini-scroll";
+    value: GeminiScrollDirectiveConfig;
 }
 
 export declare class ScrollArea extends Vue implements ScrollAreaD {
@@ -68,15 +73,5 @@ export declare class TimesIterator implements TimesIteratorD {
 export {
     GeminiScrollbarConfig,
     ScrollBarConfig,
+    LoadingBar,
 };
-
-declare module "vue/types/vue" {
-
-    interface Vue {
-        $loadingBar: LoadingBar;
-    }
-
-    interface VueConstructor {
-        $loadingBar: LoadingBar;
-    }
-}
