@@ -1,5 +1,5 @@
-import ScrollBar from "@/component/geminiScrollbar/src/ScrollBar";
-import GeminiScroll from "@/component/geminiScrollbar/src/GeminiScroll";
+import ScrollBar from "./ScrollBar";
+import GeminiScroll from "./GeminiScroll";
 
 export interface GeminiScrollBaseConfig {
     forceGemini?: boolean;
