@@ -14,7 +14,6 @@
 
 <script lang="ts">
     import {Component, Prop, Provide, Vue} from "vue-property-decorator";
-    import {ScrollAreaD, ScrollType} from "../../../types/component/ScrollArea";
 
     interface DataType {
         scrollContent: HTMLElement | null;
@@ -22,6 +21,8 @@
         disableRight: boolean;
         computedItemWidth: string;
     }
+
+    export type ScrollType = "page" | "item";
 
     @Component<ScrollArea>({
         name: "xlb-scroll-area",
@@ -32,7 +33,7 @@
             }
         },
     })
-    export default class ScrollArea extends Vue implements ScrollAreaD {
+    export default class ScrollArea extends Vue {
 
         get scrollAreaStyle() {
             return "font-size:" + this.controlSize + "px;flex:0 0 " + this.controlSize + "px";

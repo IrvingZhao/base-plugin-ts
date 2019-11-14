@@ -69,8 +69,7 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import {GeminiScrollDirectiveConfig} from "../../types/component";
-    import {GeminiScroll} from "../../src";
+    import {GeminiScroll, GeminiScrollDirectiveConfig} from "../../src";
 
     @Component<GeminiScrollTest>({
         name: "gemini-scroll-test",

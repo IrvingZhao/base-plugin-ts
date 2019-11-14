@@ -1,4 +1,5 @@
-import ScrollBar, {ScrollProperty} from "./ScrollBar";
+import ScrollBar from "./ScrollBar";
+import {ScrollProperty} from "./define";
 
 export default class VerScrollBar extends ScrollBar {
 

@@ -1,5 +1,6 @@
-import LoadingBar, {newInstance} from "./LoadingBar";
-import {LoadingBarOptions, LoadingBarInstance, LoadingBarUpdate} from "../../../types/component/LoadingBar";
+import {newInstance} from "./LoadingBar";
+import {Vue} from "vue-property-decorator";
+import {LoadingBarInstance, LoadingBarOperator, LoadingBarOptions, LoadingBarUpdate} from "./define";
 
 let loadingBarInstance: LoadingBarInstance | null;
 let color = "primary";
@@ -27,13 +28,14 @@ function update(options: LoadingBarUpdate) {
 function hide() {
     setTimeout(() => {
         update({
-            show: false
+            show: false,
+            percent: 0
         });
-        setTimeout(() => {
-            update({
-                percent: 0
-            });
-        }, 200);
+        // setTimeout(() => {
+        //     update({
+        //         percent: 0
+        //     });
+        // }, 200);
     }, duration);
 }
 
@@ -44,8 +46,8 @@ function clearTimer() {
     }
 }
 
-export default {
-    start() {
+export default class LoadingBarClass implements LoadingBarOperator {
+    public start() {
         if (timer) {
             return;
         }
@@ -68,16 +70,18 @@ export default {
                 show: true
             });
         }, 200);
-    },
-    update(percent: number) {
+    }
+
+    public update(percent: number) {
         clearTimer();
         update({
             percent,
             status: "success",
             show: true
         });
-    },
-    finish() {
+    }
+
+    public finish() {
         clearTimer();
         update({
             percent: 100,
@@ -85,8 +89,9 @@ export default {
             show: true
         });
         hide();
-    },
-    error() {
+    }
+
+    public error() {
         clearTimer();
         update({
             percent: 100,
@@ -94,8 +99,9 @@ export default {
             show: true
         });
         hide();
-    },
-    config(options: LoadingBarOptions) {
+    }
+
+    public config(options: LoadingBarOptions) {
         if (options.color) {
             color = options.color;
         }
@@ -108,11 +114,12 @@ export default {
         if (options.height) {
             height = options.height;
         }
-    },
-    destroy() {
+    }
+
+    public destroy() {
         clearTimer();
         const instance = getLoadingBarInstance();
         loadingBarInstance = null;
         instance.destroy();
     }
-};
+}

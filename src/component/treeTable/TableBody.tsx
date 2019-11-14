@@ -1,8 +1,8 @@
 import {Component, Prop, Vue} from "vue-property-decorator";
-import {GeminiScrollDirectiveConfig} from "../../../types/component";
 import {VNode} from "vue";
 import TableRow from "./TableRow";
-import {ColumnRenderConfig} from "../../../types/component/TreeTable";
+import {ColumnRenderConfig} from "./define";
+import {GeminiScrollDirectiveConfig} from "../geminiScrollbar";
 
 @Component<TableBody>({
     name: "xlb-tree-table-head",

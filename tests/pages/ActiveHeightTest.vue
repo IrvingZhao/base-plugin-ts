@@ -11,7 +11,7 @@
 
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator";
-    import {ActiveHeightParam} from "../../types/directives/ActiveHeight";
+    import {ActiveHeightParam} from "../../src";
 
     @Component<ActiveHeightTest>({
         name: "active-height-test"

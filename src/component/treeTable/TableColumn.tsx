@@ -1,6 +1,6 @@
 import {Component, Inject, Prop, Vue} from "vue-property-decorator";
 import {CreateElement, VNode} from "vue";
-import {RenderCellConfig, RenderHeadConfig, TableColumnD, TreeTableClass} from "../../../types/component/TreeTable";
+import {RenderCellConfig, RenderHeadConfig, TableColumnClass, TreeTableClass} from "./define";
 
 const getPropByPath = (obj: any, path: string, strict?: boolean): { o: any, k: string, v: any } => {
     let tempObj = obj;
@@ -100,7 +100,7 @@ const getPropByPath = (obj: any, path: string, strict?: boolean): { o: any, k: s
     },
     render: (): any => undefined,
 })
-export default class TableColumn extends Vue implements TableColumnD {
+export default class TableColumn extends Vue implements TableColumnClass {
 
     public static DEFAULT_RENDER_CELL(h: CreateElement, {row, column, $index}: { row: any, column: TableColumn, $index: number }): VNode {
         if (column && column.formatter) {
@@ -126,7 +126,7 @@ export default class TableColumn extends Vue implements TableColumnD {
     public property!: string;
 
     @Prop(Function)
-    public formatter!: (h: CreateElement, row: any, column: TableColumnD, $index: number) => any;
+    public formatter!: (h: CreateElement, row: any, column: TableColumnClass, $index: number) => any;
 
     @Prop(Function)
     public renderHeader!: (h: CreateElement, data: any) => void;

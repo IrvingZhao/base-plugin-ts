@@ -2,7 +2,7 @@
   "name": "base-plugin",
   "version": "1.0.0",
   "main": "src/index.ts",
-  "typings": "types/index.d.ts",
+  "typings": "src/index.ts",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

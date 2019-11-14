@@ -1,5 +1,4 @@
 import {CreateElement, VNode} from "vue";
-import {Inject, Prop} from "vue-property-decorator";
 
 export interface ColumnRenderConfig {
     label: string;
@@ -37,10 +36,10 @@ export interface TreeTableClass {
 
 }
 
-export interface TableColumnD {
+export interface TableColumnClass {
     property?: string;
 
-    formatter?: (h: CreateElement, row: any, column: TableColumnD, $index: number) => any;
+    formatter?: (h: CreateElement, row: any, column: TableColumnClass, $index: number) => any;
 
     renderHeader?: (h: CreateElement, data: any) => void;
 

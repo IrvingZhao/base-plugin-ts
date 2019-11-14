@@ -1,6 +1,5 @@
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {CreateElement, VNode} from "vue";
-import {XlbConfigSlot} from "../../../types/component/ConfigSlot";
 
 @Component<ConfigSlot>({
     name: "xlb-config-slot",
@@ -14,7 +13,6 @@ import {XlbConfigSlot} from "../../../types/component/ConfigSlot";
         });
         sortKeys.forEach((item) => {
             if (!this.enabled || item === "default" || slotKeyMap[item]) {
-                console.info(!this.enabled, item, slotKeyMap[item]);
                 if (item === "default") {
                     hasDefault = true;
                 }
@@ -37,7 +35,7 @@ import {XlbConfigSlot} from "../../../types/component/ConfigSlot";
         return createElement("div", {}, slotEls);
     }
 })
-export default class ConfigSlot extends Vue implements XlbConfigSlot {
+export default class ConfigSlot extends Vue {
     @Prop({type: Array, required: true})
     public slotKeys!: string[];
 

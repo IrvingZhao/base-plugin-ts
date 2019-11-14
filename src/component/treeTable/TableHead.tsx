@@ -1,6 +1,6 @@
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {CreateElement, VNode} from "vue";
-import {ColumnRenderConfig} from "../../../types/component/TreeTable";
+import {ColumnRenderConfig} from "./define";
 
 @Component<TableHead>({
     name: "xlb-tree-table-head",

@@ -1,5 +1,5 @@
 import {Component, Prop, Vue} from "vue-property-decorator";
-import {ColumnRenderConfig} from "../../../types/component/TreeTable";
+import {ColumnRenderConfig} from "./define";
 import {VNode} from "vue";
 
 @Component<TableRow>({

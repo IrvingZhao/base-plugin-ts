@@ -1,12 +1,14 @@
 import {VueConstructor} from "vue";
 import ConfigSlot from "./configSlot";
-import GeminiScrollDirective, {GeminiScroll} from "./geminiScrollbar";
+import GeminiScrollDirective, {GeminiScroll, GeminiScrollDirectiveConfig} from "./geminiScrollbar";
 import LoadingBar from "./loadingBar";
 import ScrollArea from "./scrollArea/index.vue";
 import ScrollItem from "./scrollArea/scrollItem.vue";
 import TimesIterator from "./timesIterator";
 import TreeTable from "./treeTable/index.vue";
 import TreeTableColumn from "./treeTable/TableColumn";
+import {LoadingBarOperator, LoadingBarOptions} from "./loadingBar/define";
+import {TreeTableClass, TableColumnClass} from "./treeTable/define";
 
 export default {
     install(Vue: VueConstructor): void {
@@ -17,8 +19,8 @@ export default {
         Vue.component("xlb-tree-table", TreeTable);
         Vue.component("xlb-tree-table-column", TreeTableColumn);
         Vue.directive("gemini-scroll", new GeminiScrollDirective());
-        Vue.$loadingBar = LoadingBar;
-        Vue.prototype.$loadingBar = LoadingBar;
+        Vue.$loadingBar = new LoadingBar();
+        Vue.prototype.$loadingBar = new LoadingBar();
     }
 };
 
@@ -31,6 +33,10 @@ export {
     TimesIterator,
     TreeTable,
     TreeTableColumn
-    // HorScrollBar,
-    // VerScrollBar,
+};
+
+export {
+    GeminiScrollDirectiveConfig,
+    LoadingBarOptions, LoadingBarOperator,
+    TreeTableClass, TableColumnClass,
 };

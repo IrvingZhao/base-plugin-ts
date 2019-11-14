@@ -1,7 +1,7 @@
 import HorScrollBar from "./HorScrollBar";
 import VerScrollBar from "./VerScrollBar";
-import {GeminiScrollD, GeminiScrollbarConfig} from "../../../../types/component/GeminiScroll";
-import {ScrollBarConfig, ScrollBarD} from "../../../../types/component/GeminiScrollBar";
+import ScrollBar from "./ScrollBar";
+import {GeminiScrollbarConfig, ScrollBarConfig} from "./define";
 
 function getScrollbarWidth(): number {
     const e = document.createElement("div");
@@ -26,7 +26,7 @@ function isIE(): boolean {
 type ScrollBarInter<T> = new(config: ScrollBarConfig) => T;
 
 
-export default class GeminiScroll implements GeminiScrollD {
+export default class GeminiScroll {
     public SCROLLBAR_WIDTH: number = getScrollbarWidth();
     private readonly forceGemini: boolean;
     private readonly DONT_CREATE_GEMINI: boolean = ((this.SCROLLBAR_WIDTH === 0) && this.forceGemini);
@@ -41,8 +41,8 @@ export default class GeminiScroll implements GeminiScrollD {
 
     private readonly element: HTMLElement;
     private viewElement?: HTMLElement;
-    private horizontalScrollBar?: ScrollBarD;
-    private verticalScrollBar?: ScrollBarD;
+    private horizontalScrollBar?: ScrollBar;
+    private verticalScrollBar?: ScrollBar;
     private resizeTriggerElement?: HTMLElement;
 
     private created = false;
@@ -192,7 +192,7 @@ export default class GeminiScroll implements GeminiScrollD {
         }
     }
 
-    private buildBar(Constract: ScrollBarInter<ScrollBarD>, barClass: string): ScrollBarD {
+    private buildBar(Constract: ScrollBarInter<ScrollBar>, barClass: string): ScrollBar {
         const container = this.element;
         const barElement = container.querySelectorAll<HTMLElement>(barClass);
         const result = new Constract({
@@ -207,7 +207,7 @@ export default class GeminiScroll implements GeminiScrollD {
         return result;
     }
 
-    private barMoveHandle(this: GeminiScroll, scrollBar: ScrollBarD, val: number): void {
+    private barMoveHandle(this: GeminiScroll, scrollBar: ScrollBar, val: number): void {
         const viewElement = this.viewElement;
         if (viewElement) {
             const scrollOption = {

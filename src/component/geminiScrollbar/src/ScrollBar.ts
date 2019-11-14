@@ -1,14 +1,6 @@
-import {ScrollBarD, ScrollBarConfig} from "../../../../types/component/GeminiScrollBar";
+import {ScrollBarConfig, ScrollProperty} from "./define";
 
-export declare interface ScrollProperty {
-    client: "clientWidth" | "clientHeight";
-    area: "width" | "height";
-    clientPos: "clientX" | "clientY";
-    pos: "left" | "top";
-    offsetPos: "offsetX" | "offsetY";
-}
-
-export default abstract class ScrollBar implements ScrollBarD {
+export default abstract class ScrollBar {
 
     // 必备内容
     public barElement: HTMLElement;
@@ -25,7 +17,7 @@ export default abstract class ScrollBar implements ScrollBarD {
     private readonly thumbMouseDownHandleCache: (e: MouseEvent) => void; // 滑块鼠标按下事件
     private readonly mouseMoveHandleCache: (e: MouseEvent) => void; // 鼠标移动事件
     private readonly mouseUpHandleCache: (e: MouseEvent) => void; // 滑块鼠标抬起事件
-    private readonly barMoveHandle: (scrollBar: ScrollBarD, val: number) => void; // 滚动条移动 事件
+    private readonly barMoveHandle: (scrollBar: ScrollBar, val: number) => void; // 滚动条移动 事件
     // 运行参数
     private created = false;
     private cursorDown = false; // 鼠标是否在滑块区域按下

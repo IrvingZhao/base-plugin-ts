@@ -1,11 +1,11 @@
 import GeminiScroll from "./src/GeminiScroll";
-
 import {DirectiveOptions, DirectiveBinding} from "vue/types/options";
 import Vue from "vue";
+import {GeminiScrollDirectiveConfig} from "./src/define";
 
 const instanceCache: { [key: string]: GeminiScroll } = {};
 
-export default class GeminiScrollbar implements DirectiveOptions {
+export default class GeminiScrollbarDirective implements DirectiveOptions {
     public bind(el: HTMLElement, binding: DirectiveBinding) {
         const scroll = new GeminiScroll({
             element: el,
@@ -40,4 +40,5 @@ export default class GeminiScrollbar implements DirectiveOptions {
 
 export {
     GeminiScroll,
+    GeminiScrollDirectiveConfig,
 };

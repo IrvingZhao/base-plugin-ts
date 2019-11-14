@@ -1,6 +1,5 @@
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {CreateElement, VNode} from "vue";
-import {TimesIteratorD} from "../../../types/component/TimesIterator";
 
 @Component<TimesIterator>({
     name: "xlb-times-iterator",
@@ -19,7 +18,7 @@ import {TimesIteratorD} from "../../../types/component/TimesIterator";
         return createElement("div", {}, children);
     }
 })
-export default class TimesIterator extends Vue implements TimesIteratorD {
+export default class TimesIterator extends Vue {
     @Prop({required: true, type: Number})
     public times!: number;
 

@@ -1,6 +1,6 @@
 import LoadingBar from "./loading-bar.vue";
 import Vue from "vue";
-import {LoadingBarInstance, LoadingBarProps, LoadingBarUpdate} from "../../../types/component/LoadingBar";
+import {LoadingBarInstance, LoadingBarProps, LoadingBarUpdate} from "./define";
 
 export function newInstance(properties?: LoadingBarProps): LoadingBarInstance {
     const props = properties || {};
@@ -20,7 +20,7 @@ export function newInstance(properties?: LoadingBarProps): LoadingBarInstance {
 
     return {
         update(options: LoadingBarUpdate) {
-            if (options.percent) {
+            if (options.percent || options.percent === 0) {
                 $loadingBar.$data.percent = options.percent;
             }
             if (options.status) {

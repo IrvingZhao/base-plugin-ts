@@ -11,4 +11,3 @@ declare global {
     }
   }
 }
-import Type from "../types";

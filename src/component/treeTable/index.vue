@@ -17,7 +17,7 @@
     import {Component, Prop, Provide, Vue} from "vue-property-decorator";
     import TableHead from "./TableHead";
     import TableBody from "./TableBody";
-    import {ColumnRenderConfig, TreeTableClass} from "../../../types/component/TreeTable";
+    import {ColumnRenderConfig, TreeTableClass} from "./define";
 
     @Component<TreeTable>({
         name: "xlb-tree-table",

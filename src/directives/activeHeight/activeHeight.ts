@@ -1,5 +1,5 @@
 import {DirectiveOptions, DirectiveBinding} from "vue/types/options";
-import {ActiveHeightParam} from "../../types/directives/ActiveHeight";
+import {ActiveHeightParam} from "./define";
 
 function childActiveHandle(this: HTMLElement, e: any) {
     this.style.height = (this.offsetHeight + e.changeHeight) + "px";

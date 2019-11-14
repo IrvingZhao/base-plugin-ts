@@ -1,5 +1,5 @@
 import {VueConstructor} from "vue";
-import ActiveHeight from "./activeHeight";
+import ActiveHeight, {ActiveHeightParam} from "./activeHeight";
 import MockScroll from "./mockScroll";
 import Resize from "./resize";
 
@@ -16,4 +16,7 @@ export {
     ActiveHeight,
     MockScroll,
     Resize
+};
+export {
+    ActiveHeightParam,
 };
