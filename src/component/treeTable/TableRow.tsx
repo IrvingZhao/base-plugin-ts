@@ -1,0 +1,68 @@
+import {Component, Prop, Vue} from "vue-property-decorator";
+import {ColumnRenderConfig} from "./define";
+import {VNode} from "vue";
+
+@Component<TableRow>({
+    name: "xlb-tree-table-row",
+    render(h): VNode {
+        const children = [];
+        const rowChildren = this.row[this.childProp];
+        const hasChildren = rowChildren && rowChildren.length > 0;
+        const bodyColumn = this.columns.map((column: ColumnRenderConfig, cIndex: number) => {
+            return column.renderCell(h, {
+                row: this.row,
+                rIndex: this.rIndex,
+                index: cIndex,
+                level: this.computedChildLevel,
+                hasChildren,
+                rowActive: this.activeHeightParam.active
+            });
+        });
+        children.push(
+            <div class="row body" key={"row" + this.rIndex} onClick={this.rowClick}>
+                {bodyColumn}
+            </div>
+        );
+        if (hasChildren && rowChildren instanceof Array) {
+            const expandRows = rowChildren.map((childRow: any, childRIndex: number) => {
+                return <xlb-tree-table-row row={childRow} rIndex={childRIndex} columns={this.columns} childLevel={this.childLevel + 1}
+                                           childProp={this.childProp}/>;
+            });
+            children.push(
+                <div class="expand" v-active-height={this.activeHeightParam}>
+                    {expandRows}
+                </div>
+            );
+        }
+        return children.length > 1 ? <div>{children}</div> : children[0];
+    }
+})
+export default class TableRow extends Vue {
+    @Prop(Object)
+    private row!: any;
+
+    @Prop(Number)
+    private rIndex!: number;
+
+    @Prop(Array)
+    private columns!: ColumnRenderConfig[];
+
+    @Prop({type: Number, default: 0})
+    private childLevel!: number;
+
+    @Prop(String)
+    private childProp!: string;
+
+    private activeHeightParam = {
+        active: false,
+        remove: true
+    };
+
+    private rowClick() {
+        this.activeHeightParam.active = !this.activeHeightParam.active;
+    }
+
+    private get computedChildLevel() {
+        return this.childLevel;
+    }
+}
