@@ -1,9 +1,8 @@
-import Component from "./component";
+import Component, {LoadingBarOperator} from "./component";
 import Directives from "./directives";
 import Util from "./util";
 import {VueConstructor} from "vue";
-import {LoadingBarOperator} from "@/component";
-import UtilClass from "@/util/util";
+import UtilClass from "./util/util";
 
 export default {
     install(Vue: VueConstructor) {

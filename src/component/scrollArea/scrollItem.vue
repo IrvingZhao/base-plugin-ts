@@ -6,7 +6,7 @@
 
 <script lang="ts">
     import {Component, Inject, Vue} from "vue-property-decorator";
-    import ScrollArea from "@/plugin/component/scrollArea/index.vue";
+    import ScrollArea from "./index.vue";
 
     @Component<ScrollItem>({
         name: "xlb-scroll-item",
