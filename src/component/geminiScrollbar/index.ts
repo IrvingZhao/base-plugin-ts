@@ -5,8 +5,8 @@ import {GeminiScrollDirectiveConfig} from "./src/define";
 
 const instanceCache: { [key: string]: GeminiScroll } = {};
 
-export default class GeminiScrollbarDirective implements DirectiveOptions {
-    public bind(el: HTMLElement, binding: DirectiveBinding) {
+const GeminiScrollDirective: DirectiveOptions = {
+    bind(el: HTMLElement, binding: DirectiveBinding) {
         const scroll = new GeminiScroll({
             element: el,
             ...binding.value,
@@ -20,23 +20,24 @@ export default class GeminiScrollbarDirective implements DirectiveOptions {
         const scrollId = "geminiScroll_" + Date.now();
         instanceCache[scrollId] = scroll;
         el.dataset.geminiScroll = scrollId;
-    }
+    },
 
-    public unbind(el: HTMLElement, binding: DirectiveBinding) {
+    unbind(el: HTMLElement, binding: DirectiveBinding) {
         const scrollId = el.dataset["gemini-scroll"];
         if (scrollId && instanceCache[scrollId]) {
             instanceCache[scrollId].destroy();
             delete instanceCache[scrollId];
         }
-    }
-
-    public componentUpdated(el: HTMLElement, binding: DirectiveBinding) {
+    },
+    componentUpdated(el: HTMLElement, binding: DirectiveBinding) {
         const scrollId = el.dataset.geminiScroll;
         if (scrollId && instanceCache[scrollId]) {
             instanceCache[scrollId].update();
         }
     }
-}
+};
+
+export default GeminiScrollDirective;
 
 export {
     GeminiScroll,

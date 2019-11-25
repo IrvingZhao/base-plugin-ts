@@ -18,7 +18,7 @@ export default {
         Vue.component("xlb-times-iterator", TimesIterator);
         Vue.component("xlb-tree-table", TreeTable);
         Vue.component("xlb-tree-table-column", TreeTableColumn);
-        Vue.directive("gemini-scroll", new GeminiScrollDirective());
+        Vue.directive("gemini-scroll", GeminiScrollDirective);
         Vue.$loadingBar = new LoadingBar();
         Vue.prototype.$loadingBar = new LoadingBar();
     }
