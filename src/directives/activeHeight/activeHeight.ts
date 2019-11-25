@@ -53,23 +53,25 @@ interface ActiveHeightDirectiveParam extends ActiveHeightParam {
     parentNode: HTMLElement;
 }
 
-export default class ActiveHeight implements DirectiveOptions {
-    public bind(el: HTMLElement, binding: DirectiveBinding): void {
+const ActiveHeight: DirectiveOptions = {
+    bind(el: HTMLElement, binding: DirectiveBinding): void {
         el.addEventListener("active-height", childActiveHandle);
         transitionEventArray.forEach((item) => {
             el.addEventListener(item, getTransactionEnd(binding.value), true);
         });
-    }
+    },
 
-    public inserted(el: HTMLElement, binding: DirectiveBinding): void {
+    inserted(el: HTMLElement, binding: DirectiveBinding): void {
         const data = binding.value;
         data.nextNode = el.nextSibling;
         data.parentNode = el.parentNode;
         changeHeight(el, data);
-    }
+    },
 
-    public update(el: HTMLElement, binding: DirectiveBinding) {
+    componentUpdated(el: HTMLElement, binding: DirectiveBinding) {
         const data = binding.value;
         changeHeight(el, data);
-    }
-}
+    },
+};
+
+export default ActiveHeight;

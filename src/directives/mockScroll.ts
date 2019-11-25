@@ -46,9 +46,11 @@ function scrollListener(this: HTMLElement, e: any): void {
     this.scrollTo(0, elScrollTop + e.delta * -120);
 }
 
-export default class MockScroll implements DirectiveOptions {
-    public bind(el: HTMLElement) {
+const MockScroll: DirectiveOptions = {
+    bind(el: HTMLElement) {
         el.style.overflow = "hidden";
         addEvent(el, "mousewheel", scrollListener);
     }
-}
+};
+
+export default MockScroll;

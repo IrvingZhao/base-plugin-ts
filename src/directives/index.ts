@@ -5,10 +5,10 @@ import Resize from "./resize";
 
 export default {
     install(Vue: VueConstructor) {
-        Vue.directive("active-height", new ActiveHeight());
+        Vue.directive("active-height", ActiveHeight);
         // Vue.directive("gemini-scroll", new GeminiScrollbar());
-        Vue.directive("resize", new Resize());
-        Vue.directive("mock-scroll", new MockScroll());
+        Vue.directive("resize", Resize);
+        Vue.directive("mock-scroll", MockScroll);
     }
 };
 

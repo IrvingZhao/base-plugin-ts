@@ -41,8 +41,9 @@ interface ResizeHandleParam {
     element: HTMLElement;
 }
 
-export default class Resize implements DirectiveOptions {
-    public bind(el: HTMLElement, binding: DirectiveBinding) {
+const Resize: DirectiveOptions = {
+    bind(el: HTMLElement, binding: DirectiveBinding) {
         initResizeHandle({element: el, resizeHandle: binding.value});
     }
-}
+};
+export default Resize;
