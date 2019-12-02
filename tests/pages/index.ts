@@ -6,6 +6,7 @@ import ActiveHeightTest from "./ActiveHeightTest.vue";
 import ScrollAreaTest from "./ScrollAreaTest.vue";
 import TreeTableTest from "./TreeTableTest.vue";
 import UpdateTest from "./UpdateTest.vue";
+import TimeIteratorTest from "./TimeIteratorTest.vue";
 
 const routes: RouteConfig[] = [
     {
@@ -29,13 +30,17 @@ const routes: RouteConfig[] = [
         component: ScrollAreaTest,
     },
     {
+        path: "/timeIteratorTest",
+        component: TimeIteratorTest
+    },
+    {
         path: "/treeTableTest",
         component: TreeTableTest
     },
     {
         path: "/updateTest",
         component: UpdateTest,
-    }
+    },
 ];
 
 export default {

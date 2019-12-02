@@ -4,7 +4,7 @@ const sessionStorage = window.sessionStorage;
 
 
 export default class UtilClass {
-    public static setItem(key: string, value: any): void {
+    public setItem(key: string, value: any): void {
         if (!key) {
             throw new Error("cache key cannot be null");
         }
@@ -13,7 +13,7 @@ export default class UtilClass {
         }
     }
 
-    public static getItem(key: string): any {
+    public getItem(key: string): any {
         if (!key) {
             throw new Error("cannot get data from null key");
         }
@@ -25,17 +25,17 @@ export default class UtilClass {
         }
     }
 
-    public static clearStorage(): void {
+    public clearStorage(): void {
         if (sessionStorage) {
             sessionStorage.clear();
         }
     }
 
-    public static getSimpleDate(date: Date | number): string {
+    public getSimpleDate(date: Date | number): string {
         return dateFormat(date, "yyyy-MM-dd");
     }
 
-    public static getFullDate(date: Date | number): string {
+    public getFullDate(date: Date | number): string {
         return dateFormat(date, "yyyy-MM-dd HH:mm:ss");
     }
 
@@ -49,8 +49,8 @@ export default class UtilClass {
      * @param childrenKey 子节点属性key，默认为 children
      * @return Array 树型数据
      */
-    public static generateTree(data: any[], parentNodeKey: string, mapCache: any = {}, idKey = "id",
-                               parentKey = "parent", childrenKey = "children"): any[] {
+    public generateTree(data: any[], parentNodeKey: string, mapCache: any = {}, idKey = "id",
+                        parentKey = "parent", childrenKey = "children"): any[] {
         const result: any[] = [];
         data.forEach((item) => {
             mapCache[item[idKey]] = item;
@@ -84,7 +84,7 @@ export default class UtilClass {
      * @param parentNode 父节点属性 key
      * @return Array path 数组
      */
-    public static getTreePath(data: any, fromId: string, pushId = "id", parentNode = "parentNode"): any[] {
+    public getTreePath(data: any, fromId: string, pushId = "id", parentNode = "parentNode"): any[] {
         const pathArr = [];
         let parent = data[fromId];
         while (parent) {
@@ -101,7 +101,7 @@ export default class UtilClass {
      * @param propValue 需设置的属性值
      * @param childrenNode 子节点属性key，默认为children
      */
-    public static setCurrentAndChildProp(current: any, propKey: string, propValue: any, childrenNode = "children"): void {
+    public setCurrentAndChildProp(current: any, propKey: string, propValue: any, childrenNode = "children"): void {
         const childArr: any[] = [];
         current[propKey] = propValue;
         if (current[childrenNode]) {
@@ -127,7 +127,7 @@ export default class UtilClass {
      * @param childrenNode 子节点属性key，默认为 children
      * @return Array 属性列表
      */
-    public static getCurrentAndChildProp(current: any, propKey: string, childrenNode = "children"): any[] {
+    public getCurrentAndChildProp(current: any, propKey: string, childrenNode = "children"): any[] {
         const result: any[] = [];
         if (current[propKey]) {
             result.push(current[propKey]);
@@ -148,7 +148,7 @@ export default class UtilClass {
         return result;
     }
 
-    public static dateFormat(date: Date | number, pattern: string): string {
+    public dateFormat(date: Date | number, pattern: string): string {
         return dateFormat(date, pattern);
     }
 }

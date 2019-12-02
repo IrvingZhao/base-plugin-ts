@@ -15,7 +15,7 @@ import {CreateElement, VNode} from "vue";
                 children.push(this.$scopedSlots.default(dataArr));
             }
         }
-        return createElement("div", {}, children);
+        return createElement(this.tag, {}, children);
     }
 })
 export default class TimesIterator extends Vue {
@@ -27,4 +27,7 @@ export default class TimesIterator extends Vue {
 
     @Prop({type: Number})
     public firstTimes!: number;
+
+    @Prop({type: String, default: "div"})
+    public tag!: string;
 }

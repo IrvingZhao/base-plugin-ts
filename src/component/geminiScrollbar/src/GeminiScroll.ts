@@ -28,24 +28,25 @@ type ScrollBarInter<T> = new(config: ScrollBarConfig) => T;
 
 export default class GeminiScroll {
     public SCROLLBAR_WIDTH: number = getScrollbarWidth();
+    public created = false;
+    private viewElement?: HTMLElement;
+
     private readonly forceGemini: boolean;
     private readonly DONT_CREATE_GEMINI: boolean = ((this.SCROLLBAR_WIDTH === 0) && this.forceGemini);
     private readonly autoShow: boolean;
     private readonly offsetX: number;
     private readonly offsetY: number;
+
     private readonly onResize?: () => void;
     private readonly minThumbSize: number;
 
     private enableHor: boolean;
     private enableVer: boolean;
-
     private readonly element: HTMLElement;
-    private viewElement?: HTMLElement;
     private horizontalScrollBar?: ScrollBar;
     private verticalScrollBar?: ScrollBar;
-    private resizeTriggerElement?: HTMLElement;
 
-    private created = false;
+    private resizeTriggerElement?: HTMLElement;
     private addElement = false;
 
     private readonly viewScrollHandleCache: (e: Event) => void;

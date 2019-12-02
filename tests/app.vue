@@ -22,6 +22,7 @@
             {key: "configSlot", text: "ConfigSlot"},
             {key: "activeHeight", text: "ActiveHeight"},
             {key: "scrollAreaTest", text: "ScrollAreaTest"},
+            {key: "timeIteratorTest", text: "TimeIteratorTest"},
             {key: "treeTableTest", text: "TreeTableTest"},
             {key: "updateTest", text: "UpdateTest"},
         ];
