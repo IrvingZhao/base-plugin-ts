@@ -1,13 +1,13 @@
-import Util from "./util";
+import UtilClass from "./util";
 import {VueConstructor} from "vue";
 import DateFormatter from "./DateFormatter";
 
-const UtilInstance: Util = new Util();
+const Util: UtilClass = new UtilClass();
 
 export default {
     install(Vue: VueConstructor) {
-        Vue.$util = UtilInstance;
-        Vue.prototype.$util = UtilInstance;
+        Vue.$util = Util;
+        Vue.prototype.$util = Util;
 
         Vue.filter("simpleDate", (val: Date | number) => {
             return DateFormatter(val, "yyyy-MM-dd");
@@ -24,5 +24,5 @@ export default {
 };
 
 export {
-    UtilInstance
+    Util
 };
