@@ -1,6 +1,6 @@
 {
   "name": "base-plugin",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "main": "src/index.ts",
   "typings": "src/index.ts",
   "scripts": {
@@ -12,6 +12,7 @@
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
+    "vue-observe-visibility": "^0.4.6",
     "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
