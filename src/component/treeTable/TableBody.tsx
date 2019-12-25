@@ -77,11 +77,11 @@ export default class TableBody extends Vue {
     };
 
     public resize(): void {
-        this.$refs.tableBodyContent.style.width = "auto";
-        this.$refs.tableBodyContent.style.width = this.$refs.tableBodyContent.scrollWidth + "px";
         if (this.scrollConfig.instance) {
             this.scrollConfig.instance.update();
         }
+        this.$refs.tableBodyContent.style.width = "auto";
+        this.$refs.tableBodyContent.style.width = this.$refs.tableBodyContent.scrollWidth + "px";
     }
 
     private tableContentAreaResizeHandle(): void {

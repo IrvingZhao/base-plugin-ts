@@ -2,6 +2,9 @@ import {ScrollBarConfig, ScrollProperty} from "./define";
 
 export default abstract class ScrollBar {
 
+    // 状态
+    public hidden: boolean = false;
+
     // 必备内容
     public barElement: HTMLElement;
     protected readonly thumbElement: HTMLElement;
@@ -64,11 +67,15 @@ export default abstract class ScrollBar {
         // 计算滑块大小，滑块大小 = 滑道长度 / 滚动区域长度  *  滑道长度
         this.naturalThumbSize = this.barElement[property.client] / scrollSize * this.barElement[property.client];
         if (this.scrollMax) {
+            // 设置隐藏
+            this.hidden = false;
             // 设置滑道样式
             this.barElement.classList.remove("hidden");
             // 设置滑块尺寸
             this.thumbElement.style[property.area] = Math.max(this.naturalThumbSize, this.minThumbSize) + "px";
         } else {
+            // 设置隐藏
+            this.hidden = true;
             // 隐藏滑道
             this.barElement.classList.add("hidden");
         }
