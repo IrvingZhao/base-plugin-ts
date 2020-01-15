@@ -3,6 +3,7 @@ import Directives from "./directives";
 import Util from "./util";
 import {VueConstructor} from "vue";
 import UtilClass from "./util/util";
+import DownloadUtil from "./util/DownLoad";
 
 export default {
     install(Vue: VueConstructor) {
@@ -22,10 +23,12 @@ declare module "vue/types/vue" {
     interface Vue {
         $util: UtilClass;
         $loadingBar: LoadingBarOperator;
+        $download: DownloadUtil;
     }
 
     interface VueConstructor {
         $util: UtilClass;
         $loadingBar: LoadingBarOperator;
+        $download: DownloadUtil;
     }
 }

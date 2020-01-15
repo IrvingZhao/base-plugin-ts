@@ -52,6 +52,9 @@ export default function dateFormat(date: Date | number, pattern: string): string
     if (!pattern) {
         throw new SyntaxError("pattern is null");
     }
+    if (!date) {
+        return "";
+    }
     if (date instanceof Date) {
         formatDate = date;
     } else {
