@@ -31,7 +31,6 @@ export default class StepItem extends Vue implements StepItemInterface {
     public step!: StepInterface;
 
     public get isLast() {
-        console.info(this.step.length, "======", this.index, this.step);
         return this.step.length - this.index === 1;
     }
 
