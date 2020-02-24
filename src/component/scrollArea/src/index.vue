@@ -14,7 +14,7 @@
 
 <script lang="ts">
     import {Component, Prop, Provide, Vue} from "vue-property-decorator";
-    import {ScrollType, ScrollAreaInterface} from "../index";
+    import {ScrollType, ScrollAreaInterface} from "../define";
 
     interface DataType {
         scrollContent: HTMLElement | null;
