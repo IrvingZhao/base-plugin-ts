@@ -126,8 +126,10 @@
         }
 
         public scrollTo(index: number) {
-            if (index >= this.maxScrollSize) {
-                this.scrollSize = this.maxScrollSize - 1;
+            if (index > this.maxScrollSize) {
+                this.scrollSize = this.maxScrollSize;
+            } else if (index < 0) {
+                this.scrollSize = 0;
             } else {
                 this.scrollSize = index;
             }
