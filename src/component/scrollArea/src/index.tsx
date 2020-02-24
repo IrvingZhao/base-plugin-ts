@@ -2,6 +2,9 @@ import {Component, Prop, Provide, Vue} from "vue-property-decorator";
 import {ScrollAreaInterface, ScrollType} from "../define";
 
 @Component<ScrollArea>({
+    created() {
+        this.state.index = this.initIndex;
+    },
     render() {
         return (
             <div class={"scroll-area"}>
@@ -39,6 +42,9 @@ export default class ScrollArea extends Vue implements ScrollAreaInterface {
 
     @Prop({type: Number, default: 34})
     public controlSize!: number;
+
+    @Prop({type: Number, default: 0})
+    public initIndex!: number;
 
     @Provide("scrollArea")
     private scrollArea: ScrollAreaInterface = this;

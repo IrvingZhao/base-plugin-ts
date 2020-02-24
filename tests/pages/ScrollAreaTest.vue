@@ -15,7 +15,7 @@
             </xlb-scroll-area>
         </div>
         <div class="scroll1" style="width:300px;height:100px">
-            <xlb-scroll-area :scrollType="100">
+            <xlb-scroll-area :scrollType="100" :initIndex="1">
                 <xlb-scroll-item width="100px" class="demo" v-for="(item,index) in scrollContent" :key="index">
                     <div :style="'width:100%;height:100px;background: '+item+';'"></div>
                 </xlb-scroll-item>
@@ -40,7 +40,7 @@
 </script>
 
 <style scoped>
-    .scroll1{
+    .scroll1 {
         margin-bottom: 20px;
     }
 </style>
