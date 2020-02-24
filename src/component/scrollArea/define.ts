@@ -3,10 +3,6 @@ import {Vue} from "vue-property-decorator";
 export type ScrollType = "page" | "item";
 
 export interface ScrollAreaInterface extends Vue {
-    itemWidth?: number | string;
-
-    perSize?: number;
-
     scrollType?: ScrollType | number;
 
     scrollLeftIcon?: string;
@@ -14,6 +10,8 @@ export interface ScrollAreaInterface extends Vue {
     scrollRightIcon?: string;
 
     controlSize?: number;
+
+    readonly marginLeft: number;
 
     scrollLeft(): void;
 

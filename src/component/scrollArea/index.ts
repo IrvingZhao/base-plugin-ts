@@ -1,5 +1,5 @@
-import ScrollArea from "./src/index.vue";
-import ScrollItem from "./src/scrollItem.vue";
+import ScrollArea from "./src/index";
+import ScrollItem from "./src/ScrollItem";
 
 export {
     ScrollArea, ScrollItem

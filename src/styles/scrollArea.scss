@@ -5,7 +5,6 @@
   position: relative;
 
   .scroll-control {
-    color: #D8D8D8;
     position: absolute;
     width: 64px;
     height: 64px;
@@ -43,13 +42,17 @@
   }
 
   .scroll-content {
-    display: flex;
-    flex: 1 1 auto;
-    overflow: hidden;
+    width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 
-  .scroll-item {
+  .scroll-content-wrapper {
+    display: flex;
+    height: 100%;
+    flex-wrap: nowrap;
+    position: relative;
     transition: margin-left 0.3s ease-in;
   }
+
 }
