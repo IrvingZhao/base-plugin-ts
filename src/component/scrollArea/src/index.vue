@@ -1,12 +1,12 @@
 <template>
     <div class="scroll-area">
-        <div :class="'scroll-control '+(componentData.disableLeft ? 'disable' : '')" :style="scrollAreaStyle">
+        <div :class="['scroll-control','left',{disable:componentData.disableLeft,hidden:maxScrollSize === 0}]" :style="scrollAreaStyle">
             <i :class="scrollLeftIcon" @click="scrollLeft"></i>
         </div>
         <div class="scroll-content" ref="scrollContent">
             <slot></slot>
         </div>
-        <div :class="'scroll-control ' + (componentData.disableRight ? 'disable' : '')" :style="scrollAreaStyle">
+        <div :class="['scroll-control','right',{disable:componentData.disableRight,hidden:maxScrollSize === 0}]" :style="scrollAreaStyle">
             <i :class="scrollRightIcon" @click="scrollRight"></i>
         </div>
     </div>
@@ -14,6 +14,7 @@
 
 <script lang="ts">
     import {Component, Prop, Provide, Vue} from "vue-property-decorator";
+    import {ScrollType, ScrollAreaInterface} from "../index";
 
     interface DataType {
         scrollContent: HTMLElement | null;
@@ -21,8 +22,6 @@
         disableRight: boolean;
         computedItemWidth: string;
     }
-
-    export type ScrollType = "page" | "item";
 
     @Component<ScrollArea>({
         name: "xlb-scroll-area",
@@ -33,7 +32,7 @@
             }
         },
     })
-    export default class ScrollArea extends Vue {
+    export default class ScrollArea extends Vue implements ScrollAreaInterface {
 
         get scrollAreaStyle() {
             return "font-size:" + this.controlSize + "px;flex:0 0 " + this.controlSize + "px";
@@ -83,17 +82,19 @@
         @Prop({type: String, default: "sys-icon-nextpage"})
         public scrollRightIcon!: string;
 
+        @Prop({type: Number, default: 34})
+        public controlSize!: number;
+
         @Provide("scrollArea")
         private scrollArea: ScrollArea = this;
 
         private componentData: DataType = {
             scrollContent: null,
-            disableLeft: false,
+            disableLeft: true,
             disableRight: false,
             computedItemWidth: "0px",
         };
 
-        private controlSize = 12;
         private scrollSize = 0;
 
         constructor(props: any) {
@@ -120,6 +121,23 @@
             this.scrollSize += 1;
             if (this.scrollSize >= this.maxScrollSize) {
                 this.componentData.disableRight = true;
+            }
+            this.scroll();
+        }
+
+        public scrollTo(index: number) {
+            if (index >= this.maxScrollSize) {
+                this.scrollSize = this.maxScrollSize - 1;
+            } else {
+                this.scrollSize = index;
+            }
+            this.componentData.disableRight = false;
+            this.componentData.disableLeft = false;
+            if (this.scrollSize >= this.maxScrollSize) {
+                this.componentData.disableRight = true;
+            }
+            if (this.scrollSize === 0) {
+                this.componentData.disableLeft = true;
             }
             this.scroll();
         }
@@ -179,6 +197,7 @@
             if (firstScrollItem && firstScrollItem instanceof HTMLElement) {
                 firstScrollItem.style.marginLeft = scrollWidth;
             }
+            this.$emit("scrollTo", this.scrollSize);
         }
 
     }

@@ -2,28 +2,51 @@
   width: 100%;
   display: flex;
   align-items: center;
+  position: relative;
 
   .scroll-control {
-    flex: 0 0 36px;
-    font-size: 36px;
     color: #D8D8D8;
-    margin: 0 10px;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+    background: rgba(0, 0, 0, .3);
+    color: #BCCBDB;
+    text-align: center;
+    line-height: 64px;
+    cursor: pointer;
+    z-index: 2;
 
-    > i:hover {
-      color: $primary-color;
-      cursor: pointer;
+    &.left {
+      left: 24px;
     }
 
-    &.disable > i:hover {
-      color: #D8D8D8;
-      cursor: default;
+    &.right {
+      right: 24px;
     }
+
+    &:hover {
+      background: rgba(0, 0, 0, .4);
+      color: #ffffff;
+    }
+
+    &.disable {
+      background: #BDBFCA;
+      color: #9C9EAC;
+      display: none;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
   }
 
   .scroll-content {
     display: flex;
     flex: 1 1 auto;
     overflow: hidden;
+    height: 100%;
   }
 
   .scroll-item {
