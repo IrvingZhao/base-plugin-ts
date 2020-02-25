@@ -52,7 +52,10 @@
     height: 100%;
     flex-wrap: nowrap;
     position: relative;
-    transition: margin-left 0.3s ease-in;
+
+    &.trans {
+      transition: margin-left 0.3s ease-in;
+    }
   }
 
 }

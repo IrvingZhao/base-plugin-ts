@@ -12,7 +12,7 @@ import {ScrollAreaInterface, ScrollType} from "../define";
                     <i class={this.scrollLeftIcon}/>
                 </div>
                 <div class={"scroll-content"}>
-                    <div class={"scroll-content-wrapper"} style={this.wrapperStyle} ref={"scrollContent"}>
+                    <div class={["scroll-content-wrapper", {"trans": this.enableTrans}]} style={this.wrapperStyle} ref={"scrollContent"}>
                         {this.$slots.default}
                     </div>
                 </div>
@@ -45,6 +45,9 @@ export default class ScrollArea extends Vue implements ScrollAreaInterface {
 
     @Prop({type: Number, default: 0})
     public initIndex!: number;
+
+    @Prop({type: Boolean, default: false})
+    public enableTrans!: boolean;
 
     @Provide("scrollArea")
     private scrollArea: ScrollAreaInterface = this;
@@ -107,6 +110,7 @@ export default class ScrollArea extends Vue implements ScrollAreaInterface {
             return;
         }
         this.state.index -= 1;
+        this.$emit("scrollTo", this.state.index);
     }
 
     public scrollRight(): void {
@@ -114,6 +118,7 @@ export default class ScrollArea extends Vue implements ScrollAreaInterface {
             return;
         }
         this.state.index += 1;
+        this.$emit("scrollTo", this.state.index);
     }
 
     public scrollTo(index: number): void {
@@ -123,5 +128,6 @@ export default class ScrollArea extends Vue implements ScrollAreaInterface {
             index = this.maxScrollIndex;
         }
         this.state.index = index;
+        this.$emit("scrollTo", this.state.index);
     }
 }
