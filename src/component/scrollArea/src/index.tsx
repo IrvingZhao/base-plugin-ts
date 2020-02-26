@@ -12,7 +12,7 @@ import {ScrollAreaInterface, ScrollType} from "../define";
                     <i class={this.scrollLeftIcon}/>
                 </div>
                 <div class={"scroll-content"}>
-                    <div class={["scroll-content-wrapper", {"trans": this.enableTrans}]} style={this.wrapperStyle} ref={"scrollContent"}>
+                    <div class={["scroll-content-wrapper", {trans: this.enableTrans}]} style={this.wrapperStyle} ref={"scrollContent"}>
                         {this.$slots.default}
                     </div>
                 </div>
