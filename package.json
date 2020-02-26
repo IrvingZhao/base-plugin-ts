@@ -1,6 +1,6 @@
 {
   "name": "base-plugin",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "src/index.ts",
   "typings": "src/index.ts",
   "scripts": {
