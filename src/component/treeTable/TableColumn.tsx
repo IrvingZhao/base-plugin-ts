@@ -65,12 +65,9 @@ const getPropByPath = (obj: any, path: string, strict?: boolean): { o: any, k: s
                     return TableColumn.DEFAULT_RENDER_CELL(createElement, {row, column: me, $index: rIndex});
                 }
             };
-            // const openIcon = this.table.openIcon || "el-icon-my-folder-open";
-            const openIcon = this.table.openIcon || "el-icon-folder-add";
-            // const closeIcon = this.table.closeIcon || "el-icon-my-folder-close";
-            const closeIcon = this.table.closeIcon || "el-icon-folder-remove";
-            // const normalIcon = this.table.normalIcon || "el-icon-my-file";
-            const normalIcon = this.table.normalIcon || "el-icon-document";
+            const openIcon = this.table.openIcon || "plugin-icon-zhankai";
+            const closeIcon = this.table.closeIcon || "plugin-icon-shouqi";
+            const normalIcon = this.table.normalIcon || "plugin-icon-file";
 
             const folderIconClass: any = {"expand-icon": true};
             folderIconClass[openIcon] = rowActive;

@@ -1,0 +1,20 @@
+*[class^="plugin-icon"], *[class*=" plugin-icon"] {
+  font-family: "PluginIcon", serif !important;
+  /* 以下内容参照第三方图标库本身的规则 */
+  font-size: inherit;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.plugin-icon-file:before {
+  content: '\e603';
+}
+
+.plugin-icon-shouqi:before {
+  content: '\e602';
+}
+
+.plugin-icon-zhankai:before {
+  content: '\e601';
+}
