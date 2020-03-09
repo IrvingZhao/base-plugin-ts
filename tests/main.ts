@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue, {CreateElement} from "vue";
 import App from "./app.vue";
 import Plugin from "../src";
 import ElementUI from "element-ui";
@@ -18,7 +18,7 @@ const router = new VueRouter({
 });
 
 new Vue({
-    render(createElement) {
+    render(createElement: CreateElement) {
         return createElement(App);
     },
     router

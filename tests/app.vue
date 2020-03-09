@@ -25,6 +25,7 @@
             {key: "timeIteratorTest", text: "TimeIteratorTest"},
             {key: "treeTableTest", text: "TreeTableTest"},
             {key: "updateTest", text: "UpdateTest"},
+            {key: "mockDialog", text: "MockDialog"},
         ];
 
         private activeLabel(item: any) {

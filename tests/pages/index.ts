@@ -7,8 +7,10 @@ import ScrollAreaTest from "./ScrollAreaTest.vue";
 import TreeTableTest from "./TreeTableTest.vue";
 import UpdateTest from "./UpdateTest.vue";
 import TimeIteratorTest from "./TimeIteratorTest.vue";
+import MockDialog from "./mockDialog";
 
 const routes: RouteConfig[] = [
+    MockDialog,
     {
         path: "/resize",
         component: ResizeTest,

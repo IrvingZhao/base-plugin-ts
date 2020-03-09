@@ -1,7 +1,6 @@
 import GeminiScroll from "./src/GeminiScroll";
 import {DirectiveOptions, DirectiveBinding} from "vue/types/options";
-import Vue from "vue";
-import {GeminiScrollDirectiveConfig} from "./src/define";
+import Vue, {VueConstructor} from "vue";
 
 const instanceCache: { [key: string]: GeminiScroll } = {};
 
@@ -22,14 +21,14 @@ const GeminiScrollDirective: DirectiveOptions = {
         el.dataset.geminiScroll = scrollId;
     },
 
-    unbind(el: HTMLElement, binding: DirectiveBinding) {
+    unbind(el: HTMLElement) {
         const scrollId = el.dataset["gemini-scroll"];
         if (scrollId && instanceCache[scrollId]) {
             instanceCache[scrollId].destroy();
             delete instanceCache[scrollId];
         }
     },
-    componentUpdated(el: HTMLElement, binding: DirectiveBinding) {
+    componentUpdated(el: HTMLElement) {
         const scrollId = el.dataset.geminiScroll;
         if (scrollId && instanceCache[scrollId]) {
             instanceCache[scrollId].update();
@@ -37,9 +36,14 @@ const GeminiScrollDirective: DirectiveOptions = {
     }
 };
 
-export default GeminiScrollDirective;
+export default {
+    install(vue: VueConstructor) {
+        vue.directive("gemini-scroll", GeminiScrollDirective);
+    }
+};
 
 export {
     GeminiScroll,
-    GeminiScrollDirectiveConfig,
+    GeminiScrollDirective,
 };
+export * from "./define";
