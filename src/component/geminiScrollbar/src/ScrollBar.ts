@@ -51,7 +51,14 @@ export default abstract class ScrollBar {
         this.barElement.removeEventListener("mousedown", this.barMouseDownHandleCache);
         this.thumbElement.removeEventListener("mousedown", this.thumbMouseDownHandleCache);
         if (this.createElement) {
-            this.barElement.remove();
+            if (this.barElement.remove) {
+                this.barElement.remove();
+            } else {
+                const parentNode = this.barElement.parentNode;
+                if (parentNode) {
+                    parentNode.removeChild(this.barElement);
+                }
+            }
         }
     }
 
@@ -125,12 +132,14 @@ export default abstract class ScrollBar {
         // 构建 滑道
         const result: HTMLElement = document.createElement("div");
         const barClass = this.barClasses();
-        result.classList.add.apply(result.classList, ["gm-scrollbar", ...barClass]);
+        ["gm-scrollbar", ...barClass].forEach((item) => {
+            result.classList.add(item);
+        });
 
         // 构建滑块
         const thumbElement = document.createElement("div");
         thumbElement.classList.add("thumb");
-        result.append(thumbElement);
+        result.appendChild(thumbElement);
 
         return result;
     }

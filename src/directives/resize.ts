@@ -6,25 +6,36 @@ function isIE() {
 }
 
 function createResizeElement(element: HTMLElement, resizeHandle: EventListenerOrEventListenerObject) {
-    const obj: HTMLObjectElement = document.createElement("object");
-    obj.type = "text/html";
-    obj.classList.add("resize-trigger");
-    obj.setAttribute("tabindex", "-1");
-
-    obj.onload = (): void => {
-        const win: WindowProxy | null = obj.contentDocument ? obj.contentDocument.defaultView : null;
+    const iframe: HTMLIFrameElement = document.createElement("iframe");
+    iframe.src = "about:blank";
+    iframe.classList.add("resize-trigger");
+    iframe.onload = (): void => {
+        const win = iframe.contentWindow;
         if (win) {
             win.addEventListener("resize", resizeHandle);
         }
     };
-
-    if (!isIE()) {
-        obj.data = "about:blank";
-    }
-    element.appendChild(obj);
-    if (isIE()) {
-        obj.data = "about:blank";
-    }
+    element.appendChild(iframe);
+    // const obj: HTMLObjectElement = document.createElement("object");
+    // obj.innerHTML = "<param name=\"wmode\" value=\"opaque\">";
+    // obj.type = "text/html";
+    // obj.classList.add("resize-trigger");
+    // obj.setAttribute("tabindex", "-1");
+    //
+    // obj.onload = (): void => {
+    //     const win: WindowProxy | null = obj.contentDocument ? obj.contentDocument.defaultView : null;
+    //     if (win) {
+    //         win.addEventListener("resize", resizeHandle);
+    //     }
+    // };
+    //
+    // if (!isIE()) {
+    //     obj.data = "about:blank";
+    // }
+    // element.appendChild(obj);
+    // if (isIE()) {
+    //     obj.data = "about:blank";
+    // }
 }
 
 function initResizeHandle(param: ResizeHandleParam): void {

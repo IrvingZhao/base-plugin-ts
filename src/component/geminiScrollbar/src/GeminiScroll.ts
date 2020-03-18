@@ -60,6 +60,7 @@ export default class GeminiScroll {
         this.offsetX = config.offsetX || 0;
         this.offsetY = config.offsetY || 0;
         this.minThumbSize = config.minThumbSize === 0 ? 0 : config.minThumbSize || 20;
+        this.viewElement = config.viewElement;
 
         this.viewScrollHandleCache = this.viewScrollHandle.bind(this);
     }
@@ -76,7 +77,7 @@ export default class GeminiScroll {
 
         this.element.classList.add("gm-scrollbar-container");
         const container = this.element;
-        let viewElement = container.querySelectorAll<HTMLElement>(".gm-scroll-view")[0];
+        let viewElement = this.viewElement || container.querySelectorAll<HTMLElement>(".gm-scroll-view")[0];
         if (!viewElement) {
             this.addElement = true;
             viewElement = document.createElement("div");
@@ -123,7 +124,11 @@ export default class GeminiScroll {
 
     public destroy() {
         if (this.resizeTriggerElement) {
-            this.resizeTriggerElement.remove();
+            if (this.resizeTriggerElement.remove) {
+                this.resizeTriggerElement.remove();
+            } else {
+                this.element.removeChild(this.resizeTriggerElement);
+            }
         }
         if (this.DONT_CREATE_GEMINI || !this.created || !this.viewElement) {
             return;
@@ -159,31 +164,43 @@ export default class GeminiScroll {
     }
 
     private createResizeTrigger(this: GeminiScroll) {
-        const obj = document.createElement("object");
-        obj.classList.add("gm-resize-trigger");
-        obj.type = "text/html";
-        obj.setAttribute("tabindex", "-1");
         const resizeHandler: EventListenerOrEventListenerObject = this.resizeHandler.bind(this);
-        obj.onload = () => {
-            const win = obj.contentDocument ? obj.contentDocument.defaultView : null;
+        const iframe: HTMLIFrameElement = document.createElement("iframe");
+        iframe.src = "about:blank";
+        iframe.classList.add("gm-resize-trigger");
+        iframe.onload = (): void => {
+            const win = iframe.contentWindow;
             if (win) {
                 win.addEventListener("resize", resizeHandler);
             }
         };
-
-        // IE: Does not like that this happens before, even if it is also added after.
-        if (!isIE()) {
-            obj.data = "about:blank";
-        }
-
-        this.element.appendChild(obj);
-
-        // IE: This must occur after adding the object to the DOM.
-        if (isIE()) {
-            obj.data = "about:blank";
-        }
-
-        this.resizeTriggerElement = obj;
+        this.element.appendChild(iframe);
+        this.resizeTriggerElement = iframe;
+        // const obj = document.createElement("object");
+        // obj.classList.add("gm-resize-trigger");
+        // obj.type = "text/html";
+        // obj.setAttribute("tabindex", "-1");
+        // const resizeHandler: EventListenerOrEventListenerObject = this.resizeHandler.bind(this);
+        // obj.onload = () => {
+        //     const win = obj.contentDocument ? obj.contentDocument.defaultView : null;
+        //     if (win) {
+        //         win.addEventListener("resize", resizeHandler);
+        //     }
+        // };
+        //
+        // // IE: Does not like that this happens before, even if it is also added after.
+        // if (!isIE()) {
+        //     obj.data = "about:blank";
+        // }
+        //
+        // this.element.appendChild(obj);
+        //
+        // // IE: This must occur after adding the object to the DOM.
+        // if (isIE()) {
+        //     obj.data = "about:blank";
+        // }
+        //
+        // this.resizeTriggerElement = obj;
     }
 
     private resizeHandler(this: GeminiScroll): void {
@@ -216,7 +233,12 @@ export default class GeminiScroll {
                 top: viewElement.scrollTop
             };
             scrollBar.setScrollOption(scrollOption, val);
-            viewElement.scrollTo(scrollOption);
+            if (viewElement.scrollTo) {
+                viewElement.scrollTo(scrollOption);
+            } else {
+                viewElement.scrollTop = scrollOption.top;
+                viewElement.scrollLeft = scrollOption.left;
+            }
         }
     }
 

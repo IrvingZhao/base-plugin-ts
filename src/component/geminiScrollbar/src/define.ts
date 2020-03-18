@@ -13,6 +13,7 @@ export interface GeminiScrollBaseConfig {
 
 export interface GeminiScrollbarConfig extends GeminiScrollBaseConfig {
     element: HTMLElement;
+    viewElement?: HTMLElement;
 }
 
 export interface ScrollBarConfig {

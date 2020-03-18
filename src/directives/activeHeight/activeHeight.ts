@@ -11,7 +11,13 @@ function getTransactionEnd(data: ActiveHeightParam) {
             this.style.height = "auto";
         } else {
             if (data.remove) {
-                this.remove();
+                if (this.remove) {
+                    this.remove();
+                } else {
+                    if (this.parentNode) {
+                        this.parentNode.removeChild(this);
+                    }
+                }
             }
         }
     };

@@ -8,9 +8,14 @@ export default class DownloadUtil {
             if (e.target && e.target instanceof FileReader) {
                 link.href = (e.target.result || "").toString();
             }
-            (document.body || document.getElementsByTagName("body")[0]).appendChild(link);
+            const body = (document.body || document.getElementsByTagName("body")[0]);
+            body.appendChild(link);
             link.click();
-            link.remove();
+            if (link.remove) {
+                link.remove();
+            } else {
+                body.removeChild(link);
+            }
         });
     }
 
@@ -18,8 +23,13 @@ export default class DownloadUtil {
         const a = document.createElement("a");
         a.download = name;
         a.href = link;
-        (document.body || document.getElementsByTagName("body")[0]).appendChild(a);
+        const body = (document.body || document.getElementsByTagName("body")[0]);
+        body.appendChild(a);
         a.click();
-        a.remove();
+        if (a.remove) {
+            a.remove();
+        } else {
+            body.removeChild(a);
+        }
     }
 }
