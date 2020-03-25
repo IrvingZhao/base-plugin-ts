@@ -8,6 +8,9 @@ import {StepInterface, StepItemInterface} from "./define";
         return <div class={"xlb-step"}>
             {stepItems}
         </div>;
+    },
+    destroyed(){
+        this.steps = [];
     }
 })
 export default class Step extends Vue implements StepInterface {
