@@ -9,7 +9,7 @@ import {StepInterface, StepItemInterface} from "./define";
             {stepItems}
         </div>;
     },
-    destroyed(){
+    destroyed() {
         this.steps = [];
     }
 })
