@@ -71,13 +71,14 @@ export default abstract class ScrollBar {
     public update(scrollSize: number, clientSize: number, scrollPos: number): void {
         const property = this.getScrollProperty();
         this.scrollMax = scrollSize - clientSize;
-        // 计算滑块大小，滑块大小 = 滑道长度 / 滚动区域长度  *  滑道长度
-        this.naturalThumbSize = this.barElement[property.client] / scrollSize * this.barElement[property.client];
+
         if (this.scrollMax) {
             // 设置隐藏
             this.hidden = false;
             // 设置滑道样式
             this.barElement.classList.remove("hidden");
+            // 计算滑块大小，滑块大小 = 滑道长度 / 滚动区域长度  *  滑道长度
+            this.naturalThumbSize = this.barElement[property.client] / scrollSize * this.barElement[property.client];
             // 设置滑块尺寸
             this.thumbElement.style[property.area] = Math.max(this.naturalThumbSize, this.minThumbSize) + "px";
         } else {
